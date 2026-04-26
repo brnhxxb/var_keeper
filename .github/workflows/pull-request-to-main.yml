@@ -41,13 +41,12 @@ jobs:
         run: kill -15 `cat app_pid`
           
   mega_hard_testing:
-
     needs: [unit_testing, integration_testing]
     runs-on: self-hosted
+    steps:
       - name: Checkout
-      - name: Run Mega Hard Tests
-          chmod +x ./test/all-mega-hard-tests.sh
-          ./test/all-mega-hard-tests.sh        
-        run: |
         uses: actions/checkout@v6
-
+      - name: Run Mega Hard Tests
+        run: |
+          chmod +x ./test/all-mega-hard-tests.sh
+          ./test/all-mega-hard-tests.sh
